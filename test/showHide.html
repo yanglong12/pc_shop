@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>showHide</title>
+	<style>
+		body {
+			width: 400px;
+			margin: 0 auto;
+		}
+		.btn {
+			width: 50%;
+			height: 30px;
+		}
+		#box {
+			display: none;
+			width: 400px;
+			height: 200px;
+			background-color: red;
+		}
+		.transition {
+			transition: all 0.5s;
+		}
+
+		.fadeOut {
+			visibility: hidden !important;
+			opacity: 0 !important;
+		}
+		.slideUpDownCollapse {
+			height: 0 !important;
+			padding-top: 0 !important;
+			padding-bottom: 0 !important;
+		}
+
+		.slideLeftRightCollapse {
+			width: 0 !important;
+			padding-left: 0 !important;
+			padding-right: 0 !important;
+		}
+	</style>
+</head>
+<body>
+
+	<button id="btn-show" class="btn">显示</button><button id="btn-hide" class="btn">隐藏</button>
+
+	<div id="box"></div>
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/transition.js"></script>
+	<script src="../js/showHide.js"></script>
+	<script>
+
+		var $box = $('#box');
+
+		// js.fadeSlideLeftRight.init($box);
+
+		// var showHide = window.mt.showHide($box,{
+		// 	css3:true,
+		// 	animation: 'slideUpDown'
+		// })
+
+		$box.showHide({
+			css3: true,
+			js: true,
+			animation:'slideUpDown'
+		})
+
+		$('#btn-show').on('click',function(){
+			// showHide.show();
+			$box.showHide('show');
+		});
+
+		$('#btn-hide').on('click',function(){
+			// showHide.hide();
+			$box.showHide('hide');
+		});
+
+		$box.on('show shown hide hidden',function(e){
+			console.log(e.type);
+		})
+	</script>
+</body>
+</html>
